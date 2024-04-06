@@ -18,6 +18,9 @@ jobs:
           pip install poetry
           poetry env use 3.12
       
+      - name: Configure Poetry
+        run: poetry config virtualenvs.create true  # Ensure virtual environments are created inside the project directory
+          
       - name: Install dependencies using Poetry
         run: poetry install
         
