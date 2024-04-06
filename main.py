@@ -1,7 +1,11 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.player_gamelogs import player_gamelogs_router
 from routes.players import players_router
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI(
     title="Draftbash-Players-API",
@@ -19,7 +23,7 @@ app.add_middleware(
 
 @app.get("/")
 async def main():
-    return {"message": "Hello World"}
+    return {"message": os.getenv('MONGODB_URL')}
 
 app.include_router(player_gamelogs_router)
 app.include_router(players_router)
