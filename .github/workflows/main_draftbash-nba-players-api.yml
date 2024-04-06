@@ -13,10 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.12'
+      
       - name: Install Poetry
-        run: |
-          pip install poetry
-          poetry env use 3.12
+        run: pip install poetry
       
       - name: Configure Poetry
         run: poetry config virtualenvs.create true  # Ensure virtual environments are created inside the project directory
