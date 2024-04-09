@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 
-# A percentile between 0 and 33 would be considered below average, 33 and 66 average, and 66 and 100 above average
 class PlayerGamelog(BaseModel):
     season: int
     date: str

@@ -2,7 +2,11 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.player_gamelogs import player_gamelogs_router
+from services.fetch_team_schedules import fetch_team_schedules
+from services.fetch_gamelogs import fetch_gamelogs
+from services.fetch_nba_players import fetch_nba_players
 from routes.players import players_router
+from routes.team_schedules import team_schedules_router
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -15,15 +19,20 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Set this to the appropriate origin or use ["*"] to allow all origins
+    allow_origins=["*"], 
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "DELETE"],  # Adjust the allowed HTTP methods as needed
-    allow_headers=["*"],  # Allow all headers or specify the required headers
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
 )
 
 @app.get("/")
 async def main():
-    return {"message": os.getenv('MONGODB_URL')}
+    return {"message": 'api'}
+
+@app.get("/ping")
+async def main():
+    return "Ping successful!"
 
 app.include_router(player_gamelogs_router)
 app.include_router(players_router)
+app.include_router(team_schedules_router)
