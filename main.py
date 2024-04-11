@@ -5,11 +5,14 @@ from routes.player_gamelogs import player_gamelogs_router
 from services.fetch_team_schedules import fetch_team_schedules
 from services.fetch_gamelogs import fetch_gamelogs
 from services.fetch_nba_players import fetch_nba_players
+from services.fetch_weekly_projections import fetch_weekly_projections
 from routes.players import players_router
 from routes.team_schedules import team_schedules_router
+from routes.test import test_router
 from dotenv import load_dotenv
 
 load_dotenv()
+fetch_weekly_projections()
 
 app = FastAPI(
     title="Draftbash-Players-API",
@@ -36,3 +39,4 @@ async def main():
 app.include_router(player_gamelogs_router)
 app.include_router(players_router)
 app.include_router(team_schedules_router)
+app.include_router(test_router)

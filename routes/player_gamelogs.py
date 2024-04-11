@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Path, Query
-from models.player_gamelog import PlayerGamelog
 from config.database import player_gamelogs_collection
 from schemas.serialize_player_gamelogs import serialize_player_gamelogs
 
