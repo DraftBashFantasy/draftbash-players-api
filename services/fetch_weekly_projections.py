@@ -75,4 +75,4 @@ def fetch_weekly_projections():
         avg_stats['team'] = row['team.abbreviation']
         players_avg_df.loc[len(players_avg_df)] = avg_stats
 
-    players_avg_df
+    print(players_avg_df)

@@ -12,7 +12,6 @@ from routes.test import test_router
 from dotenv import load_dotenv
 
 load_dotenv()
-fetch_weekly_projections()
 
 app = FastAPI(
     title="Draftbash-Players-API",
@@ -30,7 +29,7 @@ app.add_middleware(
 
 @app.get("/")
 async def main():
-    return {"message": 'api'}
+    return {"message": 'API'}
 
 @app.get("/ping")
 async def main():
