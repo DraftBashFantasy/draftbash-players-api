@@ -29,7 +29,7 @@ app.add_middleware(
 
 @app.get("/")
 async def main():
-    return {"message": 'API'}
+    return {"message": 'Draftbash Players API'}
 
 @app.get("/ping")
 async def main():
